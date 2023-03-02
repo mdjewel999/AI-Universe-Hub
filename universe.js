@@ -30,7 +30,7 @@ const displayUniverse = universes => {
          </div>
 
          <div class="mt-4">
-         <i class="fas fa-arrow-right text-danger" onclick="fetchNewsDetail()" data-bs-toggle="modal"
+         <i class="fas fa-arrow-right text-danger" onclick="fetchUniversesDetail()" data-bs-toggle="modal"
          data-bs-target="#exampleModal"></i>
          </div>
        </div>
@@ -48,35 +48,36 @@ universeContainer.appendChild(universeDiv)
 /* ******************************** */
 
 
-
-const fetchNewsDetails = async () => {
+const fetchUniversesDetail = async () => {
     const url = `https://openapi.programming-hero.com/api/ai/tool/01`;
     console.log(url)
     const res = await fetch(url);
     const data = await res.json();
-    displayUniverse2(data.data.tools);
+    displayUniverse2(data.data.accuracy);
   };
   
   const displayUniverse2 = universes2 => {
-      // console.log(universes);
-    const universeContainer = document.getElementById("universe_container");
+      console.log(universes2);
+    const universeContainer2 = document.getElementById("universe_container");
     universes2.forEach(universe2 => {
       const universeDiv = document.createElement("div");
       universeDiv.classList.add("col");
-      universeDiv.innerHTML = `
+      document.getElementById('modal-body').innerHTML = `
       <div class="card h-100">
-      <img src="${universe2.image}" class="card-img-top" alt="...">
-      <div class="card-body">
-          <h5 class="card-title">${universe2.description}</h5>
+    <img src="${universe2.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">${universe2.description ? universe2.description : " "}</h5>
 
-  
-        </div>
-      </div>
+      
+    </div>
   
       `;
-  universeContainer.appendChild(universeDiv)
+  universeContainer2.appendChild(universeDiv)
     });
   };
+  fetchUniversesDetail()
+
+
 
   /* ***************** */
 loadUniverse();
