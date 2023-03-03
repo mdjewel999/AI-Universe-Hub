@@ -1,107 +1,96 @@
+var singalData = {};
+
 const loadUniverse = async () => {
   const url = `https://openapi.programming-hero.com/api/ai/tools`;
   const res = await fetch(url);
   const data = await res.json();
   displayUniverse(data.data.tools);
+  // console.log(data.data.tools)
 };
 
-const displayUniverse = universes => {
-    // console.log(universes);
+const displayUniverse = (universes) => {
+  // console.log(universes);
   const universeContainer = document.getElementById("universe_container");
-  universes.forEach(universe => {
+
+  /*  const seMore = document.getElementById('btn-semore')
+  if(universes.length > 6){
+  universes = universes.slice(0, 6);
+  seMore.classList.remove('d-none')
+  }else{
+  seMore.classList.add('d-none')
+  }
+ */
+
+  universes.forEach((universe) => {
     const universeDiv = document.createElement("div");
     universeDiv.classList.add("col");
     universeDiv.innerHTML = `
-    <div class="card h-100">
-    <img src="${universe.image}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">${universe.description ? universe.description : " "}</h5>
-        <p class="card-text">1. ${universe.features[0]}</p>
-        <p class="card-text">2. ${universe.features[1]}</p>
-        <p class="card-text">3. ${universe.features[2]}</p>
-        <hr>
-       <div  class="d-flex justify-content-between align-items-center">
-          <div>
-             <h3 class="card-text mt-2">${universe.name}</h3>
-         <div class="d-flex align-items-center gap-2">
-            <i class="fa-solid fa-calendar-days"></i> 
-            <p class="card-text">${ universe.published_in}</p>
-          </div>
-         </div>
+  <div class="card h-100">
+      <img src="${universe.image}" class="card-img-top" alt="...">
+      <div class="card-body">
+          <h5 class="card-title">${
+            universe.description ? universe.description : " "
+          }</h5>
+          <p class="card-text">1. ${universe.features[0]}</p>
+          <p class="card-text">2. ${universe.features[1]}</p>
+          <p class="card-text">3. ${universe.features[2]}</p>
+          <hr>
+          <div class="d-flex justify-content-between align-items-center">
+              <div>
+                  <h3 class="card-text mt-2">${universe.name}</h3>
+                  <div class="d-flex align-items-center gap-2">
+                      <i class="fa-solid fa-calendar-days"></i>
+                      <p class="card-text">${universe.published_in}</p>
+                  </div>
 
-         <div class="mt-4">
-         <i class="fas fa-arrow-right text-danger" onclick="fetchUniversesDetail()" data-bs-toggle="modal"
-         data-bs-target="#exampleModal"></i>
-         </div>
-       </div>
 
+              </div>
+              <div class="bg-danger bg-opacity-10 text-danger rounded-circle">
+             <span onclick="loadUniverse2(${universe.id})" role="button" data-bs-toggle="modal" data-bs-target="#uneverselMoodalDetails"><i id="btn_click" class="fas fa-arrow-right p-3"></i></span>
+  
+                </div>
+               </div>
       </div>
-    </div>
-
-    `;
-universeContainer.appendChild(universeDiv)
+  </div>
+  
+  `;
+    universeContainer.appendChild(universeDiv);
   });
 };
 
+/* ********************************** */
 
+const loadUniverse2 = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/ai/tool/0${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  displayUniverse2(data.data);
 
-/* ******************************** */
+};
 
-
-const fetchUniversesDetail = async (modal_id) => {
-    const url = `https://openapi.programming-hero.com/api/ai/tool/01`;
-    // console.log(url)
-    const res = await fetch(url);
-    const data = await res.json();
-    // console.log(data)
-    displayUniverse2(data);
-  };
+const displayUniverse2 = (universes2) => {
+  console.log(universes2);
+  document.getElementById('model_title').innerText = universes2.description
+  document.getElementById('btn_basic').innerHTML = `<span> ${universes2.pricing[0].price}<br/>${universes2.pricing[0].plan}</span>`
+  document.getElementById('btn_pro').innerHTML = `<span>${universes2.pricing[1].price}<br/>${universes2.pricing[0].plan}</span>`
+ 
+  document.getElementById('btn_enterprise').innerHTML = `<span>${universes2.pricing[2].price}<br/>${universes2.pricing[0].plan}</span>`
   
-  const displayUniverse2 = universes2 => {
-      console.log(universes2);
-    const universeContainer2 = document.getElementById("universe_container");
-    const displayUniverse2 = (universe2) =>{
-            const universeDiv = document.createElement("div");
-            universeDiv.classList.add("col");
-            document.getElementById('modal-body').innerHTML = `
-           
-            <div class="card h-100">
-            <img src="${universe2.image_link}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${universe2.description ? universe.description : " "}</h5>
-                <p class="card-text">1. ${universe.features[0]}</p>
-                <p class="card-text">2. ${universe.features[1]}</p>
-                <p class="card-text">3. ${universe.features[2]}</p>
-                <hr>
-               <div  class="d-flex justify-content-between align-items-center">
-                  <div>
-                     <h3 class="card-text mt-2">${universe.name}</h3>
-                 <div class="d-flex align-items-center gap-2">
-                    <i class="fa-solid fa-calendar-days"></i> 
-                    <p class="card-text">${ universe.published_in}</p>
-                  </div>
-                 </div>
-        
-                 <div class="mt-4">
-                 <i class="fas fa-arrow-right text-danger" onclick="fetchUniversesDetail()" data-bs-toggle="modal"
-                 data-bs-target="#exampleModal"></i>
-                 </div>
-               </div>
-        
-              </div>
-            </div>
-        
-          </div>
-        
-            `;
-        universeContainer2.appendChild(universeDiv)
-         
-    }
-   
-  };
-  fetchUniversesDetail()
+
+  document.getElementById('btn_features').innerText = universes2.features[1].feature_name
+
+  document.getElementById('btn_multilingual').innerText = universes2.features[2].feature_name
+
+  document.getElementById('btn_seamless').innerText = universes2.features[3].feature_name
+
+  document.getElementById('btn_fb').innerText = universes2.integrations[0]
+  document.getElementById('btn_slack').innerText = universes2.integrations[1]
+  document.getElementById('btn_telegram').innerText = universes2.integrations[2]
 
 
 
-  /* ***************** */
+}; 
+
+/* ********************************** */
+
 loadUniverse();
