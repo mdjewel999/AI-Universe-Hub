@@ -29,7 +29,7 @@ const displayUniverse = (universes) => {
       <img src="${universe.image}" class="card-img-top" alt="...">
       <div class="card-body">
           <h5 class="card-title">${
-            universe.description ? universe.description : " "
+            universe.description ? universe.description : "Not Available "
           }</h5>
           <p class="card-text">1. ${universe.features[0]}</p>
           <p class="card-text">2. ${universe.features[1]}</p>
@@ -87,9 +87,16 @@ const displayUniverse2 = (universes2) => {
   document.getElementById('btn_slack').innerText = universes2.integrations[1]
   document.getElementById('btn_telegram').innerText = universes2.integrations[2]
 
+  document.getElementById("btn_image").src = universes2.image_link[0]
 
+  document.getElementById('image_title').innerText = universes2.input_output_examples[1].input
+  document.getElementById('image_text').innerText = universes2.input_output_examples[2].output
 
 }; 
+
+
+
+
 
 /* ********************************** */
 

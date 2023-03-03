@@ -238,3 +238,42 @@ const displayUniverse2 = (universes2) => {
       
       
         }
+
+
+
+        <!DOCTYPE html>
+<html>
+  <head>
+    <title>API Image Array Example</title>
+  </head>
+  <body>
+    <h1>API Image Array Example</h1>
+    <div id="image-container"></div>
+
+    <script>
+
+      const imageContainer = document.getElementById("image-container");
+
+      function loadImages() {
+        // Make a request to the API that returns an array of image URLs
+        fetch("https://example.com/api/images")
+          .then((response) => response.json())
+          .then((data) => {
+            // Create an HTML string that contains an `img` element for each image URL
+            const htmlString = data
+              .map((imageUrl) => `<img src="${imageUrl}" />`)
+              .join("");
+
+            // Set the `innerHTML` of the image container element to the HTML string
+            imageContainer.innerHTML = htmlString;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+
+      // Call the `loadImages` function to load the images when the page loads
+      window.addEventListener("load", loadImages);
+    </script>
+  </body>
+</html>
