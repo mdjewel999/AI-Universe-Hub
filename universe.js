@@ -12,14 +12,20 @@ const displayUniverse = (universes) => {
   // console.log(universes);
   const universeContainer = document.getElementById("universe_container");
 
-  /*  const seMore = document.getElementById('btn-semore')
+  
+  const showAll = document.getElementById('show-all')
   if(universes.length > 6){
   universes = universes.slice(0, 6);
-  seMore.classList.remove('d-none')
-  }else{
-  seMore.classList.add('d-none')
+  showAll.classList.remove('d-none')
   }
- */
+  else{
+    showAll.classList.add('d-none')
+
+  }
+  document.getElementById('btn-show-all').addEventListener('click', function(){
+
+  })
+
 
   universes.forEach((universe) => {
     const universeDiv = document.createElement("div");
@@ -58,6 +64,8 @@ const displayUniverse = (universes) => {
   });
 };
 
+
+
 /* ********************************** */
 
 const loadUniverse2 = async (id) => {
@@ -73,10 +81,9 @@ const displayUniverse2 = (universes2) => {
   document.getElementById('model_title').innerText = universes2.description
   document.getElementById('btn_basic').innerHTML = `<span> ${universes2.pricing[0].price}<br/>${universes2.pricing[0].plan}</span>`
   document.getElementById('btn_pro').innerHTML = `<span>${universes2.pricing[1].price}<br/>${universes2.pricing[0].plan}</span>`
- 
+
   document.getElementById('btn_enterprise').innerHTML = `<span>${universes2.pricing[2].price}<br/>${universes2.pricing[0].plan}</span>`
   
-
   document.getElementById('btn_features').innerText = universes2.features[1].feature_name
 
   document.getElementById('btn_multilingual').innerText = universes2.features[2].feature_name
@@ -89,9 +96,9 @@ const displayUniverse2 = (universes2) => {
 
   document.getElementById("btn_image").src = universes2.image_link[0]
 
-  document.getElementById('image_title').innerText = universes2.input_output_examples[1].input
-  document.getElementById('image_text').innerText = universes2.input_output_examples[2].output
-
+  document.getElementById('image-title').innerText = universes2.input_output_examples[1].input
+  document.getElementById('image-text').innerText = universes2.input_output_examples[0].output
+  
 }; 
 
 

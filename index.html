@@ -21,14 +21,6 @@
     <div>
       <button type="button" class="btn btn-danger">Sort By Date</button>
     </div>
-  </header>
-  <main class="container mt-4">
-    <section>
-      <div id="universe_container" class="row row-cols-1 row-cols-md-3 g-4">
-
-      </div>
-    </section>
-
     <section>
       <!-- Loader  -->
       <section id="loader">
@@ -40,6 +32,15 @@
       </section>
       <!-- loader end  -->
     </section>
+  </header>
+  <main class="container mt-4">
+    <section>
+      <div id="universe_container" class="row row-cols-1 row-cols-md-3 g-4">
+
+      </div>
+    </section>
+
+
     <!-- Modal -->
     <div class="modal fade" id="uneverselMoodalDetails" tabindex="-1" aria-labelledby="uneverselMoodalDetailsLabel"
       aria-hidden="true">
@@ -88,8 +89,8 @@
                 <div class="card  h-100">
                   <img id="btn_image" class="" src="" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title">Hi, how are you doing today?</h5>
-                    <p class="card-text">I'm doing well, thank you for asking. How can I assist you today?</p>
+                    <h5 id="image-title"></h5>
+                    <p id="image-text"></p>
                   </div>
                 </div>
               </div>
@@ -105,10 +106,14 @@
     <!-- semore button  -->
 
     <section>
-      <div id="btn-semore" class="d-grid gap-2 d-md-flex justify-content-md-center mb-4 d-none">
-        <button id="show-all" class="btn btn-danger me-md-2" type="button">See More</button>
+      <div id="show-all" class="d-none">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-4 ">
+          <button id="btn-show-all" class="btn btn-danger me-md-2" type="button">See More</button>
+        </div>
       </div>
     </section>
+
+    <!-- semore end  -->
   </main>
 
 
