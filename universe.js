@@ -25,7 +25,7 @@ const displayUniverse = (universes) => {
   }
   document.getElementById('btn-show-all').addEventListener('click', function(){
 
-  })
+  }) 
 
 
   universes.forEach((universe) => {
@@ -124,3 +124,28 @@ const displayUniverse2 = (universes2) => {
 loadUniverse();
 
 /* ********************************** */
+
+
+
+/* 
+const showAllButton = document.querySelector("#show-all-btn");
+const cardsContainer = document.querySelector(".cards-container");
+
+showAllButton.addEventListener("click", function() {
+  fetch("https://api.example.com/cards")
+    .then(response => response.json())
+    .then(data => {
+      // Remove the show-all button
+      showAllButton.remove();
+      
+      // Loop through the remaining cards and append the new ones
+      data.forEach(card => {
+        const cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
+        cardDiv.innerHTML = card.content;
+        cardsContainer.appendChild(cardDiv);
+      });
+    })
+    .catch(error => console.error(error));
+});
+ */
