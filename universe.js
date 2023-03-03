@@ -1,5 +1,6 @@
-var singalData = {};
+/* ***************************loadUniverse start******** */
 
+let singalData = {};
 const loadUniverse = async () => {
   const url = `https://openapi.programming-hero.com/api/ai/tools`;
   const res = await fetch(url);
@@ -65,8 +66,21 @@ const displayUniverse = (universes) => {
 };
 
 
+/* ***************************loadUniverse end******** */
 
-/* ********************************** */
+
+/* ***************************loader spinner******** */
+
+window.addEventListener("load", function() {
+  const loader = document.querySelector("#loader");
+  setTimeout(function() {
+    loader.classList.add("d-none");
+  }, 1000);
+});
+
+/* ************** loader spinner end ******************** */
+
+/* ************** loadUniverse2 start ******************** */
 
 const loadUniverse2 = async (id) => {
   const url = `https://openapi.programming-hero.com/api/ai/tool/0${id}`;
@@ -102,9 +116,11 @@ const displayUniverse2 = (universes2) => {
 }; 
 
 
+/* ************** loadUniverse2 end ******************** */
 
 
 
-/* ********************************** */
 
 loadUniverse();
+
+/* ********************************** */
