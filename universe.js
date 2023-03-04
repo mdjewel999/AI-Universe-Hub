@@ -16,14 +16,11 @@ const displayUniverse = (universes) => {
 /* *************** */
 
   const showAll = document.getElementById("show-all");
-  universes = universes.slice(0, 6);
+  // universes = universes.slice(0, 6);
   
   document
     .getElementById("btn-show-all").addEventListener("click", function () {
     }); 
-
-
-
 
     /* ********************* */
   universes.forEach((universe) => {
@@ -65,8 +62,6 @@ const displayUniverse = (universes) => {
   });
 };
 
-
-
 /* ***************************loadUniverse end******** */
 
 /* ***************************loader spinner******** */
@@ -90,7 +85,7 @@ const loadUniverse2 = async (id) => {
 };
 
 const displayUniverse2 = (universes2) => {
-  console.log(universes2);
+  // console.log(universes2);
   document.getElementById("model_title").innerText = universes2.description
     ? universes2.description
     : "No data Found ";
@@ -127,8 +122,6 @@ const displayUniverse2 = (universes2) => {
   document.getElementById("image-text").innerText =
     universes2.input_output_examples[0].output;
 
-  document.getElementById("btn_image2").innerText =
-    universes2.accuracy[1];
 };
 
 /* ************** loadUniverse2 end ******************** */
