@@ -64,25 +64,8 @@ const displayUniverse = (universes) => {
     universeContainer.appendChild(universeDiv);
   });
 };
-/* ***************************************** */
-/* document.getElementById("shortingByBtn").addEventListener("click", function () {
-  const arrayOfObj = eachData;
-  let sixOnj = [];
-  for (let i = 0; i < 6; i++) {
-    const index = arrayOfObj[i];
-    sixOnj.push(index);
-  }
-  const easy = sixOnj.sort(function (a, b) {
-    const convertNum = a.universe;
-    const convertNum2 = b.universe;
 
-    const num = parseInt(convertNum);
-    const num2 = parseInt(convertNum2);
 
-    return num - num2;
-  });
-  console.log(easy);
-}); */
 
 /* ***************************loadUniverse end******** */
 
