@@ -13,19 +13,19 @@ const displayUniverse = (universes) => {
   // console.log(universes);
   const universeContainer = document.getElementById("universe_container");
 
+/* *************** */
+
   const showAll = document.getElementById("show-all");
-  if (universes.length > 6) {
-    // universes = universes.slice(0, 6);
-    showAll.classList.remove("d-none");
-  } else {
-    showAll.classList.add("d-none");
-  }
+  universes = universes.slice(0, 6);
+  
   document
-    .getElementById("btn-show-all")
-    .addEventListener("click", function () {});
+    .getElementById("btn-show-all").addEventListener("click", function () {
+    }); 
 
 
-    
+
+
+    /* ********************* */
   universes.forEach((universe) => {
     const universeDiv = document.createElement("div");
     universeDiv.classList.add("col");
@@ -123,8 +123,12 @@ const displayUniverse2 = (universes2) => {
 
   document.getElementById("image-title").innerText =
     universes2.input_output_examples[1].input;
+
   document.getElementById("image-text").innerText =
     universes2.input_output_examples[0].output;
+
+  document.getElementById("btn_image2").innerText =
+    universes2.accuracy[1];
 };
 
 /* ************** loadUniverse2 end ******************** */
